@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" type="text/css" href="/final/css/member/member_myinfo_view.css">
-
+<script src="/final/js/member/member_myinfo.js"></script>
 <c:choose>
     <c:when test='${kakaoLogin != true}'>   
 		 <div class="member-myinfo-content-wrap">
@@ -14,7 +14,7 @@
 					
 					<div class="member-view-wrapper-item2 item-detail">
 						<label class="member-view-label label-email">Name</label>
-						<input autocomplete="off" type="text" id="view-name" class="nfTextField" name="view-name" placeholder="Name" value="김영웅" onfocus="javascript:blur();" style="cursor: default;">
+						<input autocomplete="off" type="text" id="view-name" class="nfTextField" name="view-name" placeholder="Name" value="" onfocus="javascript:blur();" style="cursor: default;">
 					</div>
 					
 					<div class="member-view-wrapper-item3 item-detail">
