@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+.member-purchase-wrapp {
+}
+
+.member-purchase-title {
+    width: 1400px;
+    height: 80px;
+    text-align: center;
+}
+
+.member-purchase-bbs {
+	width: 1300px;
+	font-size: 23px;
+	font-weight: bold;
+	display: inline-block;
+	text-align: center;
+	border-bottom: 3px solid #fff4d5;
+	border-top: 3px solid #fff4d5;
+}
+
+.member-purchase-list {
+	font-size: 22px;
+	border-bottom: 1px solid #969595;
+	margin: 0 auto;
+}
+
+.member-purchase-price{
+	display: inline-block;
+	width: 200px;
+}
+.member-purchase-font {
+	display: inline-block;
+	margin: 0 auto;
+	font-size: 35px;
+	width: 550px;
+	color: #f8f9fa;
+	text-shadow: 1px 1px 1px #e7e7e3;
+}
+.member-purchase-bbs{
+	display: inline-block
+}
+.member-purchase-span{
+	display: inline-block;
+	text-align: center;
+}
+.member-purchase-span1{
+	width: 150px;
+}
+.member-purchase-span2{
+	width: 650px;
+}
+.member-purchase-span3{text-align: right;width: 190px;}
+
+
+.member-div-select{
+	 width: 90px;
+	 height:38px;
+	 background-size: 8px 10px;
+	 /* border: 1px solid #ced4da; */
+	 border-radius: .25rem;
+	 /* -webkit-appearance: none; */
+	 font-size: 18px;
+	 display: inline-block;
+}
+
+.member-purchase-bbswrap{
+	width:1300px;
+	margin:0 auto;
+}
+.member-purchase-subject{
+	display: inline-block;
+}
+.member-purchase-subject:nth-child(1){
+	width: 150px;
+}
+.member-purchase-subject:nth-child(2){
+	width: 650px;
+}
+.member-purchase-subject:nth-child(3){
+	width: 300px;
+}
+.member-purchase-price:nth-child(1){
+	font-size: 16px;
+}

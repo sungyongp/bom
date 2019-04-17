@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon');
+.member-myinfo-wrapper{
+	color:#f8f9fa;
+	width: 1600px;
+	background: rgba(0,0,0,0.5);
+	margin: 0 auto 50px;
+	font-family: 'Do Hyeon', sans-serif;
+	
+}
+
+.myinfo-wrap{
+	width: 1400px;
+	margin: 0 auto;
+}
+
+
+
+.member-myinfo-content{
+	display: grid;
+	grid-template-columns: 350px 350px 350px 350px;
+	grid-template-rows: 118px 25px 650px;;
+
+}
+.member-myinfo-title{
+	grid-column-start: 1;
+    grid-column-end: 5;    
+    text-align: center;
+
+}
+.member-myinfo-title h1{
+	margin-top: 20px;
+	margin-bottom: 50px;
+}
+.member-myinfo-tab-wrap {
+
+	font-size : 18px;
+	text-align: center;
+	vertical-align: middle;
+	border-radius: 5px;
+	border-bottom: 2px solid #F58723;
+}
+.member-myinfo-tab-wrap:hover{
+	font-weight: bold;
+	border-bottom: 2px solid #d9534f;;
+}
+
+.myinfo-tab-active{
+	font-weight: bold;
+	border-bottom: 2px solid #e6e6e6;
+}
+
+.member-myinfo-content-wrap{
+	grid-column-start: 1;
+    grid-column-end: 5;
+	
+}
+.member-myinfo-content-cont{
+	margin-top:20px;
+	margin-bottom: 20px;
+}

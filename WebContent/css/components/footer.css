@@ -1,0 +1,20 @@
+#footer-container {
+	height: 250px;
+	background: black;
+	color: white;
+	padding-top: 30px;
+	overflow: hidden;
+}
+
+#footer-content {
+	padding-left: 50px;
+}
+
+.footer-item {
+	padding: 1rem;
+	cursor: pointer
+}
+
+.footer-item span:last-child {
+	margin-bottom: 20px;
+}

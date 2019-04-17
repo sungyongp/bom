@@ -1,0 +1,58 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon');
+
+body {
+	padding: 0;
+	margin: 0;
+	font-family: 'Do Hyeon', sans-serif;
+}
+
+#main-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 54px;
+	white-space: nowrap;
+}
+#main-footer {
+	position:relative;
+	z-index: -200;
+}
+#main-content, #main-category {
+	margin-top: 100px;
+	overflow: hidden;
+}
+#main-category {
+	display: none;
+	background: rgba(0,0,0,0.7);
+	position: fixed;
+	width: 100%;
+	height: 300px;
+}
+.main-category-list {
+	text-align: center;
+	margin-top: 50px;
+}
+.main-category-list a {
+	color: white;
+}
+.main-category-list a:visited,
+.main-category-list a:hover  {
+	text-decoration: none;
+	color: white;
+}
+#main-video {
+	position: fixed;
+	object-fit: fill;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 600px;
+	z-index: -100;
+}
+::-webkit-scrollbar {
+display:none;
+}
+
+

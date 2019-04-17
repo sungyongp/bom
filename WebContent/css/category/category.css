@@ -1,0 +1,589 @@
+@charset "UTF-8";
+
+<!-- 접두사에 category를 붙여주세요
+ ex) .category-container {}
+-->
+
+ul.tabs {
+	display: block;
+	position: relative;
+	right: 400px;
+	margin: 0;
+	padding: 0;
+	float: left;
+	list-style: none;
+	height: 32px;
+	width: 1050px;
+	font-size: 15px;
+}
+
+ul.tabs li {
+	float: left;
+	text-align: center;
+	cursor: pointer;
+	width: 82px;
+	height: 31px;
+	line-height: 31px;
+	border-left: none;
+	font-weight: bold;
+	background: #000;
+	overflow: hidden;
+	position: relative;
+}
+
+ul.tabs li.active {
+	background: rgba(0, 0, 0, 0.7);
+	border: 1px solid red;
+}
+
+.tab_container {
+	border-top: none;
+	float: left;
+	width: 240px;
+	height: 100%;
+}
+
+.tab_container .tab_content ul {
+	width: 1000px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.tab_container .tab_content ul li {
+	padding: 5px;
+	list-style: none;
+	width: 1000px;
+}
+
+.tab_content {
+	position: relative;
+	padding: 5px;
+	font-size: 12px;
+	display: -webkit-inline-box;
+	right: 400px;
+	height: 300px;
+	float: left;
+}
+
+.tab_content>.tab_content_actor {
+	width: 150px;
+	height: 100%;
+	position: relative;
+	margin-right: 5px;
+	float: left;
+	margin-right: 20px;
+	margin-top: 25px;
+}
+
+.tab_content>.tab_content_actor img {
+	width: 100%;
+	height: 100%;
+}
+
+.tab_content p {
+	text-align: center;
+	font-size: 15px;
+}
+
+#container-tabs {
+	width: 250px;
+	margin: 0 auto;
+}
+
+ul.tabs {
+	display: block;
+	position: relative;
+    margin: 0 auto;
+    float: left;
+    list-style: none;
+    height: 32px;
+    width: 1050px;
+    font-size: 15px;
+}
+
+ul.tabs li {
+    text-align:center;
+    cursor: pointer;
+    width:90px;
+    height: 31px;
+    line-height: 31px;
+    font-weight: bold;
+    background: #000;
+    overflow: hidden;
+    position: relative;
+    right: 20px;
+	top: -10px;
+}
+
+ul.tabs li.active {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid red;
+}
+.tab_container {
+    border-top: none;
+    float: left;
+    width: 240px;
+ 	height: 100%;
+}
+
+.tab_container .tab_content ul {
+
+    width:1100px;
+    margin:0px;
+    padding:0px;
+}
+.tab_container .tab_content ul li {
+    padding:5px;
+    list-style:none;
+    width: 1100px;
+}
+
+.tab_content {
+	width: 1100px;
+	border-top: 1px solid red;
+	position: relative;
+    padding: 5px;
+    font-size: 12px;
+    display: -webkit-inline-box;
+    right: 430px;
+    height: 300px;
+    float: left;
+}
+
+.tab_content > .tab_content_actor {
+	width: 150px;
+	height: 100%;
+	position: relative;
+	margin-right: 5px;
+	float: left;
+	margin-right: 20px;
+	margin-top: 25px;
+}
+
+.tab_content > .tab_content_actor img{
+	width: 100%;
+	height: 100%;
+}
+
+.tab_content p{
+	text-align: center;
+	font-size: 15px;
+}
+
+ #container-tabs {
+    width: 250px;
+    margin: 0 auto;
+}
+
+ /* 
+ 	------------------------------------
+ 			여기서부터 비디오 플레이어 CSS 
+ 	------------------------------------
+ */
+.category-view-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	background: black;
+	z-index: 100;
+	padding: 10px;
+	overflow: scroll;
+}
+
+.category-view-videoZone {
+	width: 1870px;
+	height: 1100px;
+	margin: 0 auto;
+	display: grid;
+	
+	grid-template-columns: 60% 39%;
+	grid-template-rows: 5% 5% 10% 10% 10% 5% 10% 10% 10% 10% 10% 10%; 	
+	grid-gap: 20px;
+	padding: 5px;
+	box-sizing: border-box;
+}
+
+.category-view-h1{
+	grid-column: 1/2;
+}
+
+.category-view-video {
+	grid-row: 2/7;
+	grid-column: 1;
+	-webkit-user-select: none;
+  	-moz-user-select: none;
+  	user-select: none;
+  	background: black;
+  	position: relative;
+  	overflow: hidden;
+  	margin-top: 10px;
+  	margin-bottom: 10px;
+}
+
+.category-view-video.fullScreen {
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+.category-view-video .overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba( 0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+.category-view-video .overlay .button {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  top: 40%;
+  left: 45%;
+  background: url(/final/img/icon/play.png);
+  background-size: 100% 80%;
+  cursor: pointer; 	
+}
+
+.category-view-video > #video-view {
+  width: 100%;
+  height: calc(100% - 60px);
+  top: 0;
+  left: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-view-video > #video-view > video {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  object-fit: fill;
+}
+
+.category-view-video #controls {
+  width: 100%;
+  height: 60px;
+  background: rgba(55, 55, 55, 0.5);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  z-index: 9999;
+  
+}
+.category-view-video #controls .playButton {
+  width: 70px;
+  height: 100%;
+  background: rgba(55, 55, 55, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  cursor: pointer;
+  transition: all 0.4s;
+ 
+}
+.category-view-video #controls .playButton:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+.category-view-video #controls .playButton .playPause {
+  width: 40px;
+  height: 40px;
+  background: url(/final/img/icon/play.png);
+  background-size: 100% 100%;
+}
+
+.category-view-video #controls .ProgressContainer {
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.category-view-video #controls .ProgressContainer .progressBar {
+  width: 100%;
+  height: 10px;
+  background: #a1a1a1;
+  border-radius: 20px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.category-view-video #controls .ProgressContainer .progressBar:hover + .time {
+  opacity: 1;
+  transform: translateY(0);
+}
+.category-view-video #controls .ProgressContainer .progressBar .progress {
+  width: 0%;
+  height: 100%;
+  background: #f5f5f5;
+  border-radius: 20px;
+}	 
+
+.category-view-video #controls .ProgressContainer .progressBar .progressSave {
+  width: 0%;
+  height: 10px;
+  position: absolute;
+  display: block;
+  top: 25px;
+}
+
+.category-view-video #controls .ProgressContainer .timer {
+  margin: 0 10px;
+  font-weight: 300;
+  font-size: 12px; 
+  font-weight: 300;
+  color: #fff;
+  
+}
+.category-view-video #controls .ProgressContainer .time {
+  width: 80px;
+  height: 25px;
+  background: rgba(20, 20, 20, 0.7);
+  position: absolute;
+  top: -30px;
+  left: 0;
+  border-radius: 5px;
+  color: #fff;
+  text-align: center;
+  line-height: 25px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.category-view-video #controls .volume {
+  width: 150px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+.category-view-video #controls .volume .icon {
+  width: 25px;
+  height: 25px;
+  background: url(/final/img/icon/on1.png);
+  background-size: 100% 100%;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.category-view-video #controls .volume .intensityBar {
+  width: 90px;
+  height: 4px;
+  background: #a1a1a1;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-right: 5px;
+  transform-origin: right center;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.category-view-video #controls .volume .intensityBar .intensity {
+  width: 50%;
+  height: 100%;
+  background: #f5f5f5;
+}
+
+.category-view-video #controls .scale {
+  width: 70px;
+  height: 100%;
+  background: rgba(55, 55, 55, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+  cursor: pointer;
+  
+}
+
+.category-view-video #controls .scale:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.category-view-video #controls .scale .icon {
+  width: 40px;
+  height: 40px;
+  background-size: 100% 100%;
+  background: url(/final/img/icon/big1.png);
+  background-size: 100% 100%;
+}
+
+/*
+	----------------------------------------
+*/
+
+.category-view-Zone {
+	grid-column: 2;
+	grid-row: 2/6;
+	padding: 5px;
+	background-color: #0b0b0b;
+}
+
+
+.category-view-Zone-h{
+	grid-column: 2;
+	grid-row: 1;
+	color: white;
+}
+
+.category-view-Zone-h p{
+	font-size: 40px;
+	
+}
+.category-view-playerZone{
+	grid-column: 2;
+	grid-row: 7/10;
+	padding: 5px;
+	background-color: #0b0b0b;
+}
+
+.category-view-playerZone-h{
+	grid-column: 2;
+	grid-row: 6;
+	color: white;
+}
+
+.category-view-playerZone-h p {
+	font-size: 40px;
+}
+
+.category-view-video-description {
+	grid-column: 1;
+	grid-row: 7/9;
+	color: white;
+	padding: 5px;
+}
+
+.category-view-player {
+	position: relative;
+	padding: 15px;
+	height: 80px;
+}
+
+.category-view-player-item {
+	color: white;
+	font-size: 32px;
+ 	position: absolute;
+ 	padding-top: 1rem;
+ 	padding-bottom: 1rem;
+ 	left: 145px;
+ 	width: 100%;
+ 	cursor: pointer;
+}
+
+.category-view-player:hover {
+	background: rgba(0,0,0,0.7);
+}
+.close-icon {
+	position:absolute;
+	top:23px;
+	right: 20px;
+	z-index:10000;
+	cursor: pointer;
+}
+
+.category-close:hover { 
+	text-decoration: none;
+	color: orange;
+}
+-----------------------------------------------------------------------
+
+.category-view-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	background: black;
+	z-index: 100;
+	padding: 10px;
+	overflow: scroll;
+}
+
+.category-view-videoZone {
+	width: 1870px;
+	height: 1100px;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 60% 39%;
+	grid-template-rows: 5% 5% 10% 10% 10% 5% 10% 10% 10% 10% 10% 10%;
+	grid-gap: 20px;
+	padding: 5px;
+	box-sizing: border-box;
+}
+
+.category-view-h1 {
+	grid-column: 1/2;
+}
+
+.category-view-video {
+	grid-row: 2/7;
+	grid-column: 1;
+}
+
+.category-view-video video {
+	outline: none;
+}
+
+.category-view-Zone {
+	grid-column: 2;
+	grid-row: 2/6;
+	padding: 5px;
+	overflow: auto;
+	background-color: #0b0b0b;
+	width:740px;
+}
+
+.category-view-Zone-h {
+	grid-column: 2;
+	grid-row: 1;
+	color: white;
+}
+
+.category-view-Zone-h p {
+	font-size: 40px;
+}
+
+.category-view-playerZone {
+	grid-column: 2;
+	grid-row: 7/10;
+	background-color: #0b0b0b;
+	padding:5px;
+	width:740px;
+	
+}
+
+.category-view-playerZone-h {
+	position:relative;
+	grid-column: 2;
+	grid-row: 6;
+	color: white;
+	width:580px;
+}
+
+.category-view-playerZone-h p {
+	font-size: 40px;
+}
+
+.category-view-video-description {
+	grid-column: 1;
+	grid-row: 7/9;
+	color: white;
+	padding: 5px;
+}
+
+.category-view-player {
+	position: relative;
+	height: 140px;
+}
+

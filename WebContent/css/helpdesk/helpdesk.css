@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+.status-reply {
+	color: yellow;
+}
+
+.mylist li {
+	list-style: none;
+}
+
+.mylist .status {
+	color: yellow;
+}
+
+.modal-title {
+	color: black;
+}
+
+.close { 
+	font-size: 3.5rem;
+	font-weight: 500;
+	line-height: 0.7;
+}
+.modifyImg{
+	width: 190px;
+	height: 100px;
+	margin-left: 50px;
+	position: relative;
+	top: 0;
+}
+
+#modifyLabel{
+	position: relative;
+	top: -40px;
+	left: 20px;
+}
+
+#btnZone {
+	position: relative;
+	top: 415px;
+	left: 1200px;
+}
+
+#image-zone-one {
+	padding-left: 500px;
+}
+#btnSubmit {
+	margin-left: 550px;
+	width : 300px;
+}
+
+.notice-menu a {
+	cursor: pointer;
+}
+.notice-menu .hide {
+	display: none;
+}
+.faq-menu a {
+	cursor: pointer;
+}
+.faq-menu .hide {
+	display: none;
+}

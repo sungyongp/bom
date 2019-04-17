@@ -1,0 +1,248 @@
+@charset "UTF-8";
+
+.navbar .empty a{
+
+	cursor: default;
+	/* width: 230px; */
+}
+
+/* Reset */
+.navbar, .navbar a, .navbar ul, .navbar li, .navbar div, .navbar form, .navbar input {
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: none;
+}
+
+.navbar a {
+	text-decoration: none;
+}
+
+.navbar li {
+	list-style: none;
+}
+
+/* Menu Container */
+.navbar {	
+	position: relative;
+	width:1600px;
+	margin: 0 auto;
+	cursor: default;
+	font-family: 'Do Hyeon', sans-serif;
+}
+
+/* Menu List */
+.navbar>li {
+	display: block;
+}
+
+/* Menu Links */
+.navbar>li>a {
+	display: inline-block;
+	
+	/* z-index: 510; */
+	width: 140px;
+	height: 54px;
+	padding: 0 20px;
+	line-height: 54px;
+	font-weight: bold;
+	font-size: 25px;
+	text-align: center;
+	color: #fcfcfc;
+	text-shadow: 0 0 1px rgba(0, 0, 0, 0.35);
+	background: rgba(0, 0, 0, 0.0);
+	/* border-left: 1px solid #4b4441;
+	border-right: 1px solid #312a27; */
+	/* -webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	transition: all .3s ease; */
+}
+
+/* .nav>li:hover>a {
+	background: #4b4441;
+} */
+
+.navbar>li:first-child>a {
+	border-radius: 3px 0 0 3px;
+	border-left: none;
+}
+.navbar>li:last-child>a {
+	border-radius: 0 3px 3px 0;
+	border-left: none;
+}
+
+
+
+/* Search Form */
+.nav-search {
+	position: absolute;
+	left: 250px;
+}
+.navbar>li.nav-search>form {
+	width: 100%;
+	height: 54px;
+	border-left: 1px solid #4b4441;
+	background: rgba(0, 0, 0, 0.1);
+}
+
+.navbar>li.nav-search input[type="search"] {
+	
+	display: inline-block;
+	width: 500px;
+	height: 54px;
+	padding: 15px 0;
+	line-height: 24px;
+	font-weight: bold;
+	font-size: 25px;
+	color: #999999;
+	text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+	background: transparent;
+	/* -webkit-transition: all .3s ease 1s;
+	-moz-transition: all .3s ease 1s;
+	-o-transition: all .3s ease 1s;
+	-ms-transition: all .3s ease 1s;
+	transition: all .3s ease 1s;
+	background: rgba(0, 0, 0, 0.75); */
+}
+
+.navbar>li.nav-search input[type="search"]:focus {
+	color: #fcfcfc;
+}
+
+/* .nav>li.nav-search input[type="text"]:focus, .nav>li.nav-search:hover input[type="text"]
+	{
+	width: 200px;
+	padding: 15px 20px;
+	-webkit-transition: all .3s ease .1s;
+	-moz-transition: all .3s ease .1s;
+	-o-transition: all .3s ease .1s;
+	-ms-transition: all .3s ease .1s;
+	transition: all .3s ease .1s;
+}
+ */
+.navbar>li.nav-search input[type="submit"] {
+	display: inline-block;
+	float: left;
+	width: 20px;
+	height: 54px;
+	padding: 0 25px;
+	cursor: pointer;
+	background: transparent url(/final/img/header/search-icon.png) no-repeat center center;
+	/* border-radius: 0 3px 3px 0; */
+	/* -webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	transition: all .3s ease; */
+}
+
+.navbar>li.nav-search input[type="submit"]:hover {
+	background-color: #4b4441;
+}
+
+/* Menu Dropdown */
+
+.navbar>li>div {
+	position: absolute;
+	display: block;
+	width: 100%;
+	top: 50px;
+	left: 0;
+	opacity: 0;
+	visibility: hidden;
+	overflow: hidden;
+	background: rgba(50,50,50,0.3);
+	border-radius: 0 0 3px 3px;
+	-webkit-transition: all .3s ease .15s;
+	-moz-transition: all .3s ease .15s;
+	-o-transition: all .3s ease .15s;
+	-ms-transition: all .3s ease .15s;
+	transition: all .3s ease .15s;
+}
+
+.navbar>li:hover>div {
+	opacity: 1;
+	visibility: visible;
+	overflow: visible;
+}
+
+/* Menu Content Styles */
+.navbar .nav-column {
+	float: left;
+	width: 20%;
+	padding: 2.5%;
+}
+
+.
+.navbar .nav-column h3 {
+	margin: 20px 0 10px 0;
+	line-height: 18px;
+	font-weight: bold;
+	font-size: 24px;
+	color: #372f2b;
+	text-transform: uppercase;
+	/* 제일 큰 카테고리로 쓸 네이밍이므로 대문자로 처리 */	
+}
+
+.navbar .nav-column h3.orange {
+	color: #ff722b;
+}
+
+.navbar .nav-column h3.yellow {
+	color: yellow;
+}
+
+.navbar .nav-column li a {
+	display: block;
+	line-height: 26px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+	color: #fcfcfc;
+}
+
+.navbar .nav-column li a:hover {
+	color: #666666;
+	cursor: pointer;
+}
+.logo > a > img{
+	display: inline-block;
+	width: 170px;
+	height: 100%;
+	padding: 0px;
+}
+
+#header-loading {
+	position: absolute;
+	top: 15px;
+	left: 380px;	
+	display: none;
+	z-index: 2;
+}
+
+#header-suggestLayer {
+	position: absolute;
+	top: 55px;
+	color: #666;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	z-index: 10;
+}
+
+#header-suggestLayer li {
+	list-style: none;
+	height: 50px;
+	padding: 2px;
+	background: black;
+	
+}
+
+.nav-user > a > img {
+	display: inline-block;
+	width: 60px;
+	height: 100%;
+	padding: 0px;
+}
