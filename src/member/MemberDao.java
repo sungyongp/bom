@@ -177,5 +177,21 @@ public class MemberDao implements Member {
 		return sqlSession.selectOne("member.phoneSearch", phone);
 	}
 	
-	
+	public boolean pwdSearch(String pwd,String chgPwd, String email) {
+		boolean b = false;
+		MemberVo vo = new MemberVo();
+		
+		 vo.setM_email(email);
+		 vo.setM_password(pwd);
+		 
+			b = sqlSession.selectOne("member.pwdSearch",vo);
+			System.out.println(b);
+			 if(b) {
+				 sqlSession.update("member.chgSearch",chgPwd);
+				 sqlSession.commit();
+				 b=true;
+			 }
+			 System.out.println(b);
+		return b;
+	}
 }

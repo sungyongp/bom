@@ -358,4 +358,24 @@ public class MemberController {
 			out.println("<script>alert('등록되지 않은 번호입니다.');location.href='/final/loginHelp.mem';</script>");
 		}
 	}
+	
+	@RequestMapping(value = "member_myinfo_view.mem")
+	public void member_myinfo_view(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		PrintWriter out = resp.getWriter();
+		boolean b = false;
+		 
+		String pwd 	  = req.getParameter("pwd");
+		String chgPwd = req.getParameter("chgPwd");
+		String email  = req.getParameter("email");
+		
+		 System.out.println(email);
+		 b = mDao.pwdSearch(pwd,chgPwd,email);
+		 System.out.println(email);
+		
+		 if(b) {
+		  out.print("true");
+		 }else {
+		  out.print("false");
+		 }
+	}
 }
