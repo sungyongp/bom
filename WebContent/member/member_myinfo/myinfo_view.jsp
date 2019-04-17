@@ -15,7 +15,7 @@
 					
 					<div class="member-view-wrapper-item2 item-detail">
 						<label class="member-view-label label-email">Name</label>
-						<input autocomplete="off" type="text" id="view-name" class="nfTextField" name="view-name" placeholder="Name" value="" onfocus="javascript:blur();" style="cursor: default;">
+						<input autocomplete="off" type="text" id="view-name" class="nfTextField" name="view-name" placeholder="Name" value="김영웅" onfocus="javascript:blur();" style="cursor: default;">
 					</div>
 					
 					<div class="member-view-wrapper-item3 item-detail">
@@ -71,7 +71,7 @@
 					
 					<div class="member-view-wrapper-item2 item-detail">
 						<label class="member-view-label label-email">Name</label>
-						<input autocomplete="off" type="text" id="view-name" class="nfTextField" name="view-name" placeholder="Name" value="" onfocus="javascript:blur();" style="cursor: default;">
+						<input autocomplete="off" type="text" id="view-name" class="nfTextField" name="view-name" placeholder="Name" value="김영웅" onfocus="javascript:blur();" style="cursor: default;">
 					</div>
 					
 					<div class="member-view-wrapper-item3 item-detail">	</div>
@@ -85,7 +85,7 @@
 					
 					<div class="member-view-wrapper-item6 item-detail">
 						<label class="member-view-label label-email">Date Of Birth</label>
-						<input autocomplete="off" type="date" id="id_date" class="nfTextField" name="date" readonly="김영웅1" onfocus="javascript:blur();" style="cursor: default;" value="1993-11-18">
+						<input autocomplete="off" type="date" id="id_date" class="nfTextField" name="date" readonly onfocus="javascript:blur();" style="cursor: default;" value="1993-11-18">
 					</div>
 					
 					<div class="member-view-wrapper-item7 item-detail"></div>
