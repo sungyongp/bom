@@ -7,7 +7,6 @@
 		 <div class="member-myinfo-content-wrap">
 			<div class="member-myinfo-content-cont">
 				<div class="member-view-wrapper">
-				
 					<div class="member-view-wrapper-item1 item-detail">
 					<label class="member-view-label label-email">Email</label>
 						<input name="view-email" class="nfTextField " id="view-email" type="email" autocomplete="off" placeholder="Email" value="lozxc1004@naver.com" onfocus="javascript:blur();" style="cursor: default;">
