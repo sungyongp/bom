@@ -84,7 +84,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0 //EN"
 		(
 		c_serial number(10),
 		c_date date,
-		c_playtime number(10)
+		v_playtime number(10)
 		)
 	</update>
 
