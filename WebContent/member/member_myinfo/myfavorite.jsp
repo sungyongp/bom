@@ -64,8 +64,14 @@
 </div>
 
 <script>
+
+
 $('.favorite-page-btn').click(function(){
 	  $(this).parent().children('.favorite-page-btn').removeClass('favorite-page-btn-activity');
 	  $(this).addClass('favorite-page-btn-activity');
 });
+
+
+
+
 </script>
