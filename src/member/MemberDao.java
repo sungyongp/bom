@@ -1,6 +1,7 @@
 package member;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -9,10 +10,62 @@ import db.MybatisFactory;
 public class MemberDao implements Member {
 	private SqlSession sqlSession;
 
+	//page 분리를 위한 변수
+	public int totSize;
+	public int totPage;
+	public int totBlock;
+	public int nowBlock;
+	public int endNo;
+	public int startNo;
+	public int endPage;
+	public int startPage;
+	
+	public int listSize = 10;//페이지당 리스트수
+	public int blockSize = 5;
+	public int nowPage =1;
+	
+	
+	
 	public MemberDao() {
 		sqlSession = MybatisFactory.getFactory().openSession();
 	}
 
+	
+	public String favorList(String serial){
+		
+		String favorTable = "favorite_"+serial;
+		StringBuilder sb = new StringBuilder();
+		int cnt = sqlSession.selectOne("member.favorPage", favorTable);
+		pageCompute(cnt);
+		Page p = new Page();
+		p.setStartNo(this.startNo);
+		p.setEndNo(this.endNo);
+		p.setC_tableName(serial);
+		p.setC_tableName1(serial);
+		p.setC_tableName2(serial);
+		
+		
+		List<FavoriteVo> data = sqlSession.selectList("member.favorList", p);
+		
+		if(data.size() != 0 ) {
+			sb.append("[");
+			sb.append(data.get(0).toJSON());
+			for(int i = 1 ; i<data.size();i++) {
+				sb.append(",");
+				sb.append(data.get(i).toJSON());
+			}
+			sb.append("]");
+		}else {
+			sb = null;
+		}
+		
+		return sb.toString();
+	}
+	
+	
+	
+	
+	
 	public boolean favorCheck(FavoriteVo vo) {
 		return sqlSession.selectOne("member.favorCheck", vo);
 	}
@@ -129,7 +182,7 @@ public class MemberDao implements Member {
 		ViewingActivityVo vo = new ViewingActivityVo();
 		vo.setC_serial(Integer.parseInt(serial));
 		vo.setC_tableName(mSerial);
-		vo.setC_playtime(Integer.parseInt(playtime));
+		vo.setV_playtime(Integer.parseInt(playtime));
 
 		int cnt = sqlSession.insert("member.addViewingActivity", vo);
 		if (cnt > 0) {
@@ -158,7 +211,7 @@ public class MemberDao implements Member {
 		ViewingActivityVo vo = new ViewingActivityVo();
 		vo.setC_serial(Integer.parseInt(serial));
 		vo.setC_tableName(mSerial);
-		vo.setC_playtime(Integer.parseInt(playtime));
+		vo.setV_playtime(Integer.parseInt(playtime));
 		int cnt = sqlSession.update("member.updateView", vo);
 		if (cnt != 0) {
 			sqlSession.commit();
@@ -176,6 +229,145 @@ public class MemberDao implements Member {
 	public String phoneSearch(String phone) {
 		return sqlSession.selectOne("member.phoneSearch", phone);
 	}
+	
+	public void pageCompute(int cnt) {
+
+		try {
+
+				this.totSize = cnt;
+
+				this.totPage = (int) Math.ceil(this.totSize / (double) this.listSize);
+				this.totBlock = (int) Math.ceil(this.totPage / (double) this.blockSize);
+				this.nowBlock = (int) Math.ceil(this.nowPage / (double) this.blockSize);
+				
+				this.endNo = this.nowPage * this.listSize;
+				this.startNo = this.endNo - this.listSize + 1;
+				if(this.endNo> this.totSize) this.endNo = this.totSize;
+				
+				
+				this.endPage = this.nowBlock * this.blockSize;
+				this.startPage = this.endPage - this.blockSize + 1;
+				if(this.endPage > this.totPage) this.endPage = this.totPage;
+
+				
+		
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+	}
+
+
+	public int getTotSize() {
+		return totSize;
+	}
+
+
+	public void setTotSize(int totSize) {
+		this.totSize = totSize;
+	}
+
+
+	public int getTotPage() {
+		return totPage;
+	}
+
+
+	public void setTotPage(int totPage) {
+		this.totPage = totPage;
+	}
+
+
+	public int getTotBlock() {
+		return totBlock;
+	}
+
+
+	public void setTotBlock(int totBlock) {
+		this.totBlock = totBlock;
+	}
+
+
+	public int getNowBlock() {
+		return nowBlock;
+	}
+
+
+	public void setNowBlock(int nowBlock) {
+		this.nowBlock = nowBlock;
+	}
+
+
+	public int getEndNo() {
+		return endNo;
+	}
+
+
+	public void setEndNo(int endNo) {
+		this.endNo = endNo;
+	}
+
+
+	public int getStartNo() {
+		return startNo;
+	}
+
+
+	public void setStartNo(int startNo) {
+		this.startNo = startNo;
+	}
+
+
+	public int getEndPage() {
+		return endPage;
+	}
+
+
+	public void setEndPage(int endPage) {
+		this.endPage = endPage;
+	}
+
+
+	public int getStartPage() {
+		return startPage;
+	}
+
+
+	public void setStartPage(int startPage) {
+		this.startPage = startPage;
+	}
+
+
+	public int getListSize() {
+		return listSize;
+	}
+
+
+	public void setListSize(int listSize) {
+		this.listSize = listSize;
+	}
+
+
+	public int getBlockSize() {
+		return blockSize;
+	}
+
+
+	public void setBlockSize(int blockSize) {
+		this.blockSize = blockSize;
+	}
+
+
+	public int getNowPage() {
+		return nowPage;
+	}
+
+
+	public void setNowPage(int nowPage) {
+		this.nowPage = nowPage;
+	}
+	
 	
 	
 }

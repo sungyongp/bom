@@ -13,10 +13,7 @@ function goPurchase(){
 }
 
 function goMyinfoView(){
-	
 	$(".member-myinfo-content-cont").load('./member/member_myinfo/myinfo_view.jsp');
-	
-	
 }
 
 function goMyFavorite(){
