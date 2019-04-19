@@ -1,16 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" type="text/css" href="/final/css/member/member_myinfo_view.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="/final/js/member/member_myinfo.js"></script>
 
 <c:choose>
     <c:when test='${kakaoLogin != true}'>   
 		 <div class="member-myinfo-content-wrap">
 			<div class="member-myinfo-content-cont">
 				<div class="member-view-wrapper">
-				
 					<div class="member-view-wrapper-item1 item-detail">
 					<label class="member-view-label label-email">Email</label>
-						<input name="view-email" class="nfTextField " id="view-email" type="email" autocomplete="off" placeholder="Email" value="lozxc1004@naver.com" onfocus="javascript:blur();" style="cursor: default;">
+						<input name="view-email" class="nfTextField " id="view-email" type="email" autocomplete="off" placeholder="Email" value="${bomLoginId}" onfocus="javascript:blur();" style="cursor: default;">
 					</div>
 					
 					<div class="member-view-wrapper-item2 item-detail">
@@ -25,28 +27,30 @@
 					
 					<div class="member-view-wrapper-item4 item-detail">
 						<label class="member-view-label label-email">NickName</label>
-						<input autocomplete="off" type="text" id="view-nickname" class="nfTextField" name="view-nickname" placeholder="NickName" value="Heros">
+						<input autocomplete="off" type="text" id="view-nickname" class="nfTextField" name="view-nickname" placeholder="NickName" value="Heros" readonly onfocus="javascript:blur();" style="cursor: default;">
 					</div>
 					
 					<div class="member-view-wrapper-item5 item-detail">
-						<label class="member-view-label label-email">Re-write Password</label>
-						<input autocomplete="off" type="Password" id="view-repassword" class="nfTextField" name="view-repassword" placeholder="Re-write Password" value="1234567890">
+						<label class="member-view-label label-email">Change Password</label>
+						<input autocomplete="off" type="Password" id="view-chageassword" class="nfTextField" name="view-changepassword" placeholder="Re-write Password" value="1234567890" onkeyup="passwordChk(this.value)">
 					</div>
 					
 					<div class="member-view-wrapper-item6 item-detail">
 						<label class="member-view-label label-email">Date Of Birth</label>
-						<input autocomplete="off" type="date" id="id_date" class="nfTextField" name="date" readonly="" onfocus="javascript:blur();" style="cursor: default;" value="1993-11-18">
+						<input autocomplete="off" type="date" id="view-date" class="nfTextField" name="view-date" readonly onfocus="javascript:blur();" style="cursor: default;" value="1993-11-18">
 					</div>
 					
-					<div class="member-view-wrapper-item7 item-detail"></div>
+					<div class="member-view-wrapper-item7 item-detail">
+						<label style="color:#ff9933;width:300px;height:50px;" id="changePassword" class="changePassword"></label>
+					</div>
 					
 					<div class="member-view-wrapper-item8 item-detail">
 						<label class="member-view-label label-email">Phone</label>
-						<input autocomplete="off" type="text" id="id_nicname" class="nfTextField" name="nickname" placeholder="NickName" value="01099997878">
+						<input autocomplete="off" type="text" id="view-phone" class="nfTextField" name="view-phone" placeholder="NickName" value="01099997878">
 					</div>
 					
 					<div class="member-view-wrapper-item9">
-						<input value="비밀번호 변경" autocomplete="off" type="button" id="member-view-btn-modify" class="btn btn-secondary member-view-modify">
+						<input value="비밀번호 변경" autocomplete="off" type="button" id="member-view-btn-modify" class="btn btn-secondary member-view-modify" onclick="pwdChage()">
 					</div>
 					
 					<div class="member-view-wrapper-item10">
@@ -66,36 +70,36 @@
 				
 					<div class="member-view-wrapper-item1 item-detail">
 					<label class="member-view-label label-email">Email</label>
-						<input name="view-email" class="nfTextField " id="view-email" type="email" autocomplete="off" placeholder="Email" value="lozxc1004@naver.com" onfocus="javascript:blur();" style="cursor: default;">
+						<input name="kakao-email" class="nfTextField " id="kakao-email" type="email" autocomplete="off" placeholder="Email" value="lozxc1004@naver.com" onfocus="javascript:blur();" style="cursor: default;">
 					</div>
 					
 					<div class="member-view-wrapper-item2 item-detail">
 						<label class="member-view-label label-email">Name</label>
-						<input autocomplete="off" type="text" id="view-name" class="nfTextField" name="view-name" placeholder="Name" value="김영웅" onfocus="javascript:blur();" style="cursor: default;">
+						<input autocomplete="off" type="text" id="kakao-name" class="nfTextField" name="kakao-name" placeholder="Name" value="김영웅" onfocus="javascript:blur();" style="cursor: default;">
 					</div>
 					
 					<div class="member-view-wrapper-item3 item-detail">	</div>
 					
 					<div class="member-view-wrapper-item4 item-detail">
 						<label class="member-view-label label-email">NickName</label>
-						<input autocomplete="off" type="text" id="view-nickname" class="nfTextField" name="view-nickname" placeholder="NickName" value="Heros">
+						<input autocomplete="off" type="text" id="kakao-nickname" class="nfTextField" name="kakao-nickname" placeholder="NickName" value="Heros">
 					</div>
 					
 					<div class="member-view-wrapper-item5 item-detail"></div>
 					
 					<div class="member-view-wrapper-item6 item-detail">
 						<label class="member-view-label label-email">Date Of Birth</label>
-						<input autocomplete="off" type="date" id="id_date" class="nfTextField" name="date" readonly="" onfocus="javascript:blur();" style="cursor: default;" value="1993-11-18">
+						<input autocomplete="off" type="date" id="kakao-date" class="nfTextField" name="kakao-date" readonly onfocus="javascript:blur();" style="cursor: default;" value="1993-11-18">
 					</div>
 					
 					<div class="member-view-wrapper-item7 item-detail"></div>
 					
 					<div class="member-view-wrapper-item8 item-detail">
 						<label class="member-view-label label-email">Phone</label>
-						<input autocomplete="off" type="text" id="id_nicname" class="nfTextField" name="nickname" placeholder="NickName" value="01099997878">
+						<input autocomplete="off" type="text" id="kakao-nickname" class="nfTextField" name="kakao-nickname" placeholder="NickName" value="01099997878">
 					</div>
 					
-					<div class="member-view-wrapper-item9">	</div>
+					<div class="member-view-wrapper-item9"></div>
 					
 					<div class="member-view-wrapper-item10">
 						<input value="개인정보 수정" autocomplete="off" type="button" id="member-view-btn-delete" class="btn btn-secondary member-view-delete">

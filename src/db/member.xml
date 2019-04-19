@@ -138,17 +138,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0 //EN"
 		id="idnickName">
 		SELECT COUNT(*) FROM bom_member WHERE m_nickName = #{m_nickName}
 	</select>
-	
-	<select resultType="String" parameterType="String" id="idSearck"> 
-		SELECT m_password 
-		FROM bom_member 
+
+	<select resultType="String" parameterType="String" id="idSearck">
+		SELECT m_password
+		FROM bom_member
 		WHERE m_email = #{m_email}
 	</select>
-	
-	<select resultType="String" parameterType="String" id="phoneSearch"> 
-		select m_email 
-		from bom_member 
-		where m_phone= #{m_phone} 
+
+	<select resultType="String" parameterType="String"
+		id="phoneSearch">
+		select m_email
+		from bom_member
+		where m_phone= #{m_phone}
 	</select>
-	
+
+	<select id="pwdSearch" parameterType="member.MemberVo"
+		resultType="boolean">
+		select
+		case when count(*) > 0
+		then 1
+		else 0
+		end result
+		from bom_member
+		where m_email = #{m_email} and m_password = #{m_password}
+	</select>
+
+	<update id="chgSearch" parameterType="String">
+		update bom_member set
+		m_password = #{m_password}
+	</update>
+
 </mapper>

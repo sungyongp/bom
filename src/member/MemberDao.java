@@ -229,8 +229,7 @@ public class MemberDao implements Member {
 	public String phoneSearch(String phone) {
 		return sqlSession.selectOne("member.phoneSearch", phone);
 	}
-	
-	public void pageCompute(int cnt) {
+		public void pageCompute(int cnt) {
 
 		try {
 
@@ -257,7 +256,23 @@ public class MemberDao implements Member {
 		}
 	
 	}
-
+	public boolean pwdSearch(String pwd,String chgPwd, String email) {
+		boolean b = false;
+		MemberVo vo = new MemberVo();
+		
+		 vo.setM_email(email);
+		 vo.setM_password(pwd);
+		 
+			b = sqlSession.selectOne("member.pwdSearch",vo);
+			System.out.println(b);
+			 if(b) {
+				 sqlSession.update("member.chgSearch",chgPwd);
+				 sqlSession.commit();
+				 b=true;
+			 }
+			 System.out.println(b);
+		return b;
+	}
 
 	public int getTotSize() {
 		return totSize;
@@ -368,6 +383,5 @@ public class MemberDao implements Member {
 		this.nowPage = nowPage;
 	}
 	
-	
-	
+
 }
