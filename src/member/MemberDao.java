@@ -1,5 +1,5 @@
 package member;
-
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -7,7 +7,9 @@ import org.apache.ibatis.session.SqlSession;
 
 import db.MybatisFactory;
 
+
 public class MemberDao implements Member {
+  
 	private SqlSession sqlSession;
 
 	//page 분리를 위한 변수
@@ -62,10 +64,7 @@ public class MemberDao implements Member {
 		return sb.toString();
 	}
 	
-	
-	
-	
-	
+
 	public boolean favorCheck(FavoriteVo vo) {
 		return sqlSession.selectOne("member.favorCheck", vo);
 	}
@@ -226,9 +225,88 @@ public class MemberDao implements Member {
 	public String idSearch(String id) {
 		return sqlSession.selectOne("member.idSearck",id);
 	}
+  
+  
 	public String phoneSearch(String phone) {
 		return sqlSession.selectOne("member.phoneSearch", phone);
 	}
+  
+  
+  
+  	public boolean pwdchg(String pwd,String chgPwd, String email) {
+		boolean b = false;
+		MemberVo vo = new MemberVo();
+		
+		 vo.setM_email(email);
+		 vo.setM_password(pwd);
+		 
+			b = sqlSession.selectOne("member.pwdSearch",vo);
+			 if(b) {
+				 sqlSession.update("member.chgSearch",chgPwd);
+				 sqlSession.commit();
+				 b=true;
+			 }
+			 
+		return b;
+	}
+	
+	public boolean phoneChg(String phone) {
+		boolean b = false;
+		int a = sqlSession.update("member.phoneChg",phone);
+			 if(a>0) {
+				 sqlSession.commit();
+				 b=true;
+			 }else{
+				 sqlSession.rollback();
+				 b=false;
+			 }
+			 
+		return b;
+	}
+	
+	public MemberVo nickNameSearch(String nickName) {
+		
+		return sqlSession.selectOne("member.nickNameSearch", nickName);
+	}
+	
+	public boolean emailDelete(String email, String pwd) {
+		MemberVo vo = new MemberVo();
+		boolean c = false;
+		
+		vo.setM_email(email);
+		vo.setM_password(pwd);
+		
+		 int b = sqlSession.delete("member.emailDelete", vo);
+		 
+		 if(b>0) {
+			 c = true;
+			 sqlSession.commit();
+			 
+		 }else {
+			 c = false;
+			 sqlSession.rollback();
+		 }
+		
+		return c;
+	}
+	public boolean pwdSearch(String pwd,String chgPwd, String email) {
+		boolean b = false;
+		MemberVo vo = new MemberVo();
+		
+		 vo.setM_email(email);
+		 vo.setM_password(pwd);
+		 
+			b = sqlSession.selectOne("member.pwdSearch",vo);
+			System.out.println(b);
+			 if(b) {
+				 sqlSession.update("member.chgSearch",chgPwd);
+				 sqlSession.commit();
+				 b=true;
+			 }
+			 System.out.println(b);
+		return b;
+	}
+  
 		public void pageCompute(int cnt) {
 
 		try {
@@ -256,23 +334,7 @@ public class MemberDao implements Member {
 		}
 	
 	}
-	public boolean pwdSearch(String pwd,String chgPwd, String email) {
-		boolean b = false;
-		MemberVo vo = new MemberVo();
-		
-		 vo.setM_email(email);
-		 vo.setM_password(pwd);
-		 
-			b = sqlSession.selectOne("member.pwdSearch",vo);
-			System.out.println(b);
-			 if(b) {
-				 sqlSession.update("member.chgSearch",chgPwd);
-				 sqlSession.commit();
-				 b=true;
-			 }
-			 System.out.println(b);
-		return b;
-	}
+
 
 	public int getTotSize() {
 		return totSize;
@@ -385,3 +447,4 @@ public class MemberDao implements Member {
 	
 
 }
+

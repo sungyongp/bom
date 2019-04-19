@@ -129,8 +129,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0 //EN"
 	</select>
 
 	<select resultType="Integer" parameterType="String" id="idchk">
-		SELECT
-		COUNT(*) FROM bom_member
+		SELECT COUNT(*)
+		FROM bom_member
 		WHERE m_email = #{m_email}
 	</select>
 
@@ -167,5 +167,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0 //EN"
 		update bom_member set
 		m_password = #{m_password}
 	</update>
+	
+	<select resultType="member.MemberVo" parameterType="String" id="nickNameSearch">
+		SELECT m_name, m_birth, m_phone 
+		FROM bom_member 
+		WHERE m_nickname = #{m_nickname}
+	</select>
+	
+	<update id="phoneChg" parameterType="String">
+		update bom_member set m_phone = #{m_phone}
+	</update>
+	
+	<delete id="emailDelete" parameterType="member.MemberVo">
+		delete from bom_member where m_email = #{m_email} and m_password = #{m_password}
+	</delete>
 
 </mapper>
