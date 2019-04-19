@@ -58,8 +58,8 @@
 			
 					<br/>
 					<!-- 페이지 로딩 후 기본으로 받아오는 닉네임 / 유저 시리얼 값  -->
-					<input type = "hidden" id = "helpdeskMemberSerial" name = "helpdeskMemberSerial" value = "1" >
-					<input type = "hidden" id = "helpdeskNickname" name = "helpdeskNickname" value = "닉네임">
+					<input type = "text" id = "helpdeskMemberSerial" name = "helpdeskMemberSerial" value = "<%=session.getAttribute("bomMemberSeiral") %>" >
+					<input type = "text" id = "helpdeskNickname" name = "helpdeskNickname" value = "<%=session.getAttribute("bomNickName")%>">
 
 				</form>
 		<%} %>
