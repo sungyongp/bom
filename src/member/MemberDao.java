@@ -1,6 +1,8 @@
 package member;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -129,7 +131,7 @@ public class MemberDao implements Member {
 		ViewingActivityVo vo = new ViewingActivityVo();
 		vo.setC_serial(Integer.parseInt(serial));
 		vo.setC_tableName(mSerial);
-		vo.setC_playtime(Integer.parseInt(playtime));
+		vo.setV_playtime(Integer.parseInt(playtime));
 
 		int cnt = sqlSession.insert("member.addViewingActivity", vo);
 		if (cnt > 0) {
@@ -158,7 +160,7 @@ public class MemberDao implements Member {
 		ViewingActivityVo vo = new ViewingActivityVo();
 		vo.setC_serial(Integer.parseInt(serial));
 		vo.setC_tableName(mSerial);
-		vo.setC_playtime(Integer.parseInt(playtime));
+		vo.setV_playtime(Integer.parseInt(playtime));
 		int cnt = sqlSession.update("member.updateView", vo);
 		if (cnt != 0) {
 			sqlSession.commit();
@@ -167,17 +169,17 @@ public class MemberDao implements Member {
 			sqlSession.rollback();
 			return false;
 		}
-
 	}
 	
 	public String idSearch(String id) {
 		return sqlSession.selectOne("member.idSearck",id);
 	}
+	
 	public String phoneSearch(String phone) {
 		return sqlSession.selectOne("member.phoneSearch", phone);
 	}
 	
-	public boolean pwdSearch(String pwd,String chgPwd, String email) {
+	public boolean pwdchg(String pwd,String chgPwd, String email) {
 		boolean b = false;
 		MemberVo vo = new MemberVo();
 		
@@ -185,13 +187,53 @@ public class MemberDao implements Member {
 		 vo.setM_password(pwd);
 		 
 			b = sqlSession.selectOne("member.pwdSearch",vo);
-			System.out.println(b);
 			 if(b) {
 				 sqlSession.update("member.chgSearch",chgPwd);
 				 sqlSession.commit();
 				 b=true;
 			 }
-			 System.out.println(b);
+			 
 		return b;
 	}
+	
+	public boolean phoneChg(String phone) {
+		boolean b = false;
+		int a = sqlSession.update("member.phoneChg",phone);
+			 if(a>0) {
+				 sqlSession.commit();
+				 b=true;
+			 }else{
+				 sqlSession.rollback();
+				 b=false;
+			 }
+			 
+		return b;
+	}
+	
+	public MemberVo nickNameSearch(String nickName) {
+		
+		return sqlSession.selectOne("member.nickNameSearch", nickName);
+	}
+	
+	public boolean emailDelete(String email, String pwd) {
+		MemberVo vo = new MemberVo();
+		boolean c = false;
+		
+		vo.setM_email(email);
+		vo.setM_password(pwd);
+		
+		 int b = sqlSession.delete("member.emailDelete", vo);
+		 
+		 if(b>0) {
+			 c = true;
+			 sqlSession.commit();
+			 
+		 }else {
+			 c = false;
+			 sqlSession.rollback();
+		 }
+		
+		return c;
+	}
+	
 }

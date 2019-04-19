@@ -4,6 +4,11 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="/final/js/member/member_myinfo.js"></script>
+<!-- Popper JS -->
+<script   src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script   src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 
 <c:choose>
     <c:when test='${kakaoLogin != true}'>   
@@ -17,22 +22,22 @@
 					
 					<div class="member-view-wrapper-item2 item-detail">
 						<label class="member-view-label label-email">Name</label>
-						<input autocomplete="off" type="text" id="view-name" class="nfTextField" name="view-name" placeholder="Name" value="김영웅" onfocus="javascript:blur();" style="cursor: default;">
+						<input autocomplete="off" type="text" id="view-name" class="nfTextField" name="view-name" placeholder="Name" value="" onfocus="javascript:blur();" style="cursor: default;">
 					</div>
 					
 					<div class="member-view-wrapper-item3 item-detail">
 						<label class="member-view-label label-email">Password</label>
-						<input autocomplete="off" type="password" id="view-password" class="nfTextField" name="view-password" placeholder="Password" value="1234567890">
+						<input autocomplete="off" type="password" id="view-password" class="nfTextField" name="view-password" placeholder="Password" value="">
 					</div>
 					
 					<div class="member-view-wrapper-item4 item-detail">
 						<label class="member-view-label label-email">NickName</label>
-						<input autocomplete="off" type="text" id="view-nickname" class="nfTextField" name="view-nickname" placeholder="NickName" value="Heros" readonly onfocus="javascript:blur();" style="cursor: default;">
+						<input autocomplete="off" type="text" id="view-nickname" class="nfTextField" name="view-nickname" placeholder="NickName" value="${bomNickName}" readonly onfocus="javascript:blur();" style="cursor: default;">
 					</div>
 					
 					<div class="member-view-wrapper-item5 item-detail">
 						<label class="member-view-label label-email">Change Password</label>
-						<input autocomplete="off" type="Password" id="view-chageassword" class="nfTextField" name="view-changepassword" placeholder="Re-write Password" value="1234567890" onkeyup="passwordChk(this.value)">
+						<input autocomplete="off" type="Password" id="view-chageassword" class="nfTextField" name="view-changepassword" placeholder="Re-write Password" value="" onkeyup="passwordChk(this.value)">
 					</div>
 					
 					<div class="member-view-wrapper-item6 item-detail">
@@ -54,12 +59,43 @@
 					</div>
 					
 					<div class="member-view-wrapper-item10">
-						<input value="개인정보 수정" autocomplete="off" type="button" id="member-view-btn-delete" class="btn btn-secondary member-view-delete">
+						<input value="개인정보 수정" autocomplete="off" type="button" id="member-view-btn-delete" class="btn btn-secondary member-view-delete" onclick="personalChage()">
 					</div>
 					
 					<div class="member-view-wrapper-item11 item-detail item-delete">
-		    			<a href="#">회원탈퇴</a> 하기를 원하십니까?</div>
-				</div>
+		    			<a href="#" data-toggle="modal" data-target="#myModal" >회원탈퇴</a> 하기를 원하십니까?
+		    		</div>
+		    		
+		    		
+		    		<!-- BootStrap Modal  -->
+			    		<div class="modal fade" id="myModal">
+				         <div class="modal-dialog">
+				            <div class="modal-content">
+				                              
+				               <div class="modal-header">
+				                  <h3 class="modal-title" style="color:black;">비밀번호를 입력하세요.</h3>
+				                  <button type="button" class="close" data-dismiss="modal">×</button>
+				               </div>
+				                              
+				               <div class="modal-body">                                          
+				                  <form name = "폼 네임" method="POST">      
+				                     <div class = "input-group mb-3">
+				                        <div class = "input-group-prepend">
+				                           <span class = "input-group-text">Password</span>
+				                        </div>
+				                        <input type = "password" id="modal-password" class = "form-control" name = "password" required="required" placeholder="your password">
+				                     </div>                     <p>                                    
+				                     <button type ="button" class="btn btn-outline-danger" onclick = "myinfo_delete(this.form)" style= "width: 200px; margin-left: 10px;">삭제</button>
+				                     <button type ="button" class="btn btn-outline-secondary" data-dismiss="modal" style= "width: 200px; margin-left: 30px;">취소</button>
+				                  </form>
+				               </div>
+				            </div>
+				         </div>
+					</div>
+					
+					
+		    		
+				</div>	
 			</div>
 		</div>     
     </c:when>
@@ -111,6 +147,10 @@
 			</div>
 		</div>     
     </c:otherwise>
-
-
 </c:choose>
+
+<script>
+$('.member-myinfo-content-wrap').ready(function(){
+	myinfoChange();
+});
+</script>
