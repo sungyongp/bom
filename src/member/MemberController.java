@@ -2,6 +2,7 @@ package member;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -33,6 +34,18 @@ public class MemberController {
 		this.mVali = mVali;
 	}
 
+	@RequestMapping(value = "FavoriteList.mem")
+	public void favoriteList(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		String serial = req.getParameter("serial");
+		
+		PrintWriter out = resp.getWriter();
+	
+		String json = mDao.favorList(serial);
+		
+		out.print(json);
+	}
+	
+	
 	@RequestMapping(value = "FavoriteCheck.mem")
 	public void favoriteCheck(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		PrintWriter out = resp.getWriter();
@@ -138,7 +151,7 @@ public class MemberController {
 
 				int serial = mDao.getKakaoMemberSerial(kakaoId);
 				mDao.createTable(serial);
-
+				
 				req.getSession().setAttribute("bomMemberSeiral", serial);
 				req.getSession().setAttribute("bomLoginId", kakaoId);
 				req.getSession().setAttribute("bomNickName", kakaoNickName);

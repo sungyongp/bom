@@ -153,4 +153,5 @@
 $('.member-myinfo-content-wrap').ready(function(){
 	myinfoChange();
 });
-</script>
+</script>  
+
