@@ -18,7 +18,7 @@
 	<h2>고객센터 1:1 문의 PAGE</h2>
 	<div class = "one">
 	
-		<%if(session.getAttribute("bomMemberSeiral") == null){ %>
+			<%if(session.getAttribute("bomMemberSeiral") == null){ %>
 		
 				<hr style="border: 1px solid white;" />
 				<h2>로그인을 먼저 해야합니다.</h2>
@@ -58,8 +58,8 @@
 			
 					<br/>
 					<!-- 페이지 로딩 후 기본으로 받아오는 닉네임 / 유저 시리얼 값  -->
-					<input type = "text" id = "helpdeskMemberSerial" name = "helpdeskMemberSerial" value = "<%=session.getAttribute("bomMemberSeiral") %>" >
-					<input type = "text" id = "helpdeskNickname" name = "helpdeskNickname" value = "<%=session.getAttribute("bomNickName")%>">
+					<input type = "hidden" id = "helpdeskMemberSerial" name = "helpdeskMemberSerial" value = "<%=session.getAttribute("bomMemberSeiral") %>" >
+					<input type = "hidden" id = "helpdeskNickname" name = "helpdeskNickname" value = "<%=session.getAttribute("bomNickName")%>">
 
 				</form>
 		<%} %>

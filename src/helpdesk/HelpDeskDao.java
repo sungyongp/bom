@@ -13,6 +13,8 @@ import db.MybatisFactory;
 public class HelpDeskDao implements HelpDesk {
 
 	String path = "C://Users/Administrator/eclipse-workspace/final/WebContent/img/";
+	
+	
 	int size = 1024 * 1024 * 50; // 10Mb
 	String encode = "utf-8";
 	MultipartRequest multi;

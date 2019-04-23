@@ -17,8 +17,7 @@
 </head>
 <body>
 	<%
-		int id = 1; //임의 멤버 시리얼값 테스트용
-		/* request.getSession().getAttribute("bomMemberSerial") != null ? (int)request.getSession().getAttribute("bomMemberSerial") : 0; */
+		int id = request.getSession().getAttribute("bomMemberSeiral") != null ? (int)request.getSession().getAttribute("bomMemberSeiral") : 0;
 		HelpDeskDao hDao = new HelpDeskDao();
 		List<HelpDeskVo> result = hDao.listCheck(id);
 
